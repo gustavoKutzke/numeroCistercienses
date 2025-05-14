@@ -47,7 +47,7 @@ def index():
     partes = {}
 
     if request.method == "POST":
-        # PRIORIDADE 1: Número digitado
+       
         if "numero" in request.form and request.form["numero"].strip():
             try:
                 numero = int(request.form["numero"])
@@ -64,7 +64,7 @@ def index():
             except:
                 pass
 
-        # PRIORIDADE 2: Imagem enviada
+        
         if "arquivo" in request.files:
             arquivo = request.files["arquivo"]
             if arquivo.filename:
