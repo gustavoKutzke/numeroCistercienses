@@ -1,0 +1,91 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor Cisterciense</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 40px;
+        }
+        h2 {
+            color: #007acc;
+        }
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+        input[type="number"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background: #007acc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+        img {
+            margin-top: 20px;
+            border: 3px solid #ccc;
+            border-radius: 8px;
+        }
+        .resultado {
+            margin-top: 30px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #e9f5ff;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Conversor de Números Cistercienses</h2>
+
+    <form method="POST">
+        <label>Digite um número (0 a 9999):</label><br>
+        <input type="number" name="numero" min="0" max="9999" required>
+        <button type="submit">Converter</button>
+    </form>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Ou envie uma imagem (.png):</label><br>
+        <input type="file" name="arquivo" accept="image/png" required>
+        <button type="submit">Enviar imagem</button>
+    </form>
+
+    {% if imagem %}
+    <div class="resultado">
+        <h3>Resultado: {{ resultado }}</h3>
+        <img src="/static/output/{{ imagem }}" width="200" alt="Imagem Cisterciense">
+        <h4>Decomposição:</h4>
+        <ul>
+            <li>Milhar: {{ partes.milhar }}</li>
+            <li>Centena: {{ partes.centena }}</li>
+            <li>Dezena: {{ partes.dezena }}</li>
+            <li>Unidade: {{ partes.unidade }}</li>
+        </ul>
+    </div>
+    {% endif %}
+</body>
+</html>
